@@ -158,10 +158,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/todo-app-example/dev/1561137037749-2019-06-21T17:10:37.749Z/todo-app-example.zip"
+                "S3Key": "serverless/todo-app-example/dev/1561146901703-2019-06-21T19:55:01.703Z/todo-app-example.zip"
               },
               "FunctionName": "todo-app-example-dev-app",
-              "Handler": "index.userHandler",
+              "Handler": "index.handler",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -182,14 +182,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "AppLambdaVersionkMgHmIMCdDJlUAoxPLAq0YuSVTB86eYMvArkA5ZeQA": {
+          "AppLambdaVersiono2hPCiorEFf1kDctA3caxKmSqGuBZN2tL0LbK9SU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "SnjIw6d1XzIoLGdMFGrWdShNAQZtFL28YZH0JFoZVsA="
+              "CodeSha256": "zuiGXGl8JCqEW1vz2A0Ib3v1HBhmrVIkPCG5Ve/vD6I="
             }
           },
           "GetUserLambdaFunction": {
@@ -199,10 +199,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/todo-app-example/dev/1561137037749-2019-06-21T17:10:37.749Z/todo-app-example.zip"
+                "S3Key": "serverless/todo-app-example/dev/1561146901703-2019-06-21T19:55:01.703Z/todo-app-example.zip"
               },
               "FunctionName": "todo-app-example-dev-getUser",
-              "Handler": "index.handler",
+              "Handler": "services/getUser.handler",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -223,14 +223,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetUserLambdaVersion1GVVGE04IX6rMDHH2BkEEmy40MRqvMpRc5wh3yGIuEs": {
+          "GetUserLambdaVersione2YAmCtgC7XZs8pt6ltpLivDCh979pU0e9Nzb8PQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetUserLambdaFunction"
               },
-              "CodeSha256": "SnjIw6d1XzIoLGdMFGrWdShNAQZtFL28YZH0JFoZVsA="
+              "CodeSha256": "zuiGXGl8JCqEW1vz2A0Ib3v1HBhmrVIkPCG5Ve/vD6I="
             }
           },
           "CreateUserLambdaFunction": {
@@ -240,10 +240,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/todo-app-example/dev/1561137037749-2019-06-21T17:10:37.749Z/todo-app-example.zip"
+                "S3Key": "serverless/todo-app-example/dev/1561146901703-2019-06-21T19:55:01.703Z/todo-app-example.zip"
               },
               "FunctionName": "todo-app-example-dev-createUser",
-              "Handler": "index.handler",
+              "Handler": "services/createUser.handler",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -264,14 +264,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateUserLambdaVersionVW9TsxkOrsL57DLHARbJ03ylQ3OUTitwHFraNdlfqM": {
+          "CreateUserLambdaVersionZSJxDOaOzhFZGwSedrFouXxzwVVpKaSFVMnvDLFLY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateUserLambdaFunction"
               },
-              "CodeSha256": "SnjIw6d1XzIoLGdMFGrWdShNAQZtFL28YZH0JFoZVsA="
+              "CodeSha256": "zuiGXGl8JCqEW1vz2A0Ib3v1HBhmrVIkPCG5Ve/vD6I="
             }
           },
           "ApiGatewayRestApi": {
@@ -502,7 +502,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1561137033136": {
+          "ApiGatewayDeployment1561146896301": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -660,19 +660,19 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionkMgHmIMCdDJlUAoxPLAq0YuSVTB86eYMvArkA5ZeQA"
+              "Ref": "AppLambdaVersiono2hPCiorEFf1kDctA3caxKmSqGuBZN2tL0LbK9SU"
             }
           },
           "GetUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetUserLambdaVersion1GVVGE04IX6rMDHH2BkEEmy40MRqvMpRc5wh3yGIuEs"
+              "Ref": "GetUserLambdaVersione2YAmCtgC7XZs8pt6ltpLivDCh979pU0e9Nzb8PQ"
             }
           },
           "CreateUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateUserLambdaVersionVW9TsxkOrsL57DLHARbJ03ylQ3OUTitwHFraNdlfqM"
+              "Ref": "CreateUserLambdaVersionZSJxDOaOzhFZGwSedrFouXxzwVVpKaSFVMnvDLFLY"
             }
           },
           "ServiceEndpoint": {
@@ -735,7 +735,7 @@
     "pluginsData": {},
     "functions": {
       "app": {
-        "handler": "index.userHandler",
+        "handler": "index.handler",
         "events": [
           {
             "http": "ANY /"
@@ -752,7 +752,7 @@
         "vpc": {}
       },
       "getUser": {
-        "handler": "index.handler",
+        "handler": "services/getUser.handler",
         "events": [
           {
             "http": "GET /users/{proxy+}"
@@ -766,7 +766,7 @@
         "vpc": {}
       },
       "createUser": {
-        "handler": "index.handler",
+        "handler": "services/createUser.handler",
         "events": [
           {
             "http": "POST /users"
@@ -812,7 +812,7 @@
     "artifact": "/Users/calummuir/Documents/GitHub/todo-app/.serverless/todo-app-example.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/todo-app-example/dev/1561137037749-2019-06-21T17:10:37.749Z",
+    "artifactDirectoryName": "serverless/todo-app-example/dev/1561146901703-2019-06-21T19:55:01.703Z",
     "artifact": "todo-app-example.zip"
   }
 }

@@ -29,11 +29,11 @@ functions:
       - http: ANY /
       - http: 'ANY {proxy+}'
   getUser:
-    handler: index.handler
+    handler: services/getUser.handler
     events:
       - http: 'GET /users/{proxy+}'
   createUser:
-    handler: index.handler
+    handler: services/createUser.handler
     events:
       - http: 'POST /users'
 
