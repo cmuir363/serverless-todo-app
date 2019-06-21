@@ -1,0 +1,78 @@
+/* user object structure */
+{
+  "id": "int",
+  "name": "String",
+  "email": "String",
+  "joinDate": "Date",
+  "canvases": [
+    {"id": "int"},
+    {"id": "int"}
+  ]
+}
+
+/* canvas object structure */
+{
+  "id": "int",
+  "owner": "userId",
+  "users": [
+    {"id": "userId"},
+    {"id": "userId"},
+    {"id": "userId"}
+  ],
+  "boards": [
+    {
+      "id": "int",
+      "title": "String",
+      "cards": [
+        {"id": "cardId"},
+        {"id": "cardId"},
+        {"id": "cardId"},
+        {"id": "cardId"}
+      ],
+      "canvas": "canvasId",
+      "creationDate": "Date"
+    },
+    {
+      "id": "int",
+      "title": "String",
+      "activeCards": [
+        {
+          "id": "int",
+          "board": "boardId",
+          "content": "String",
+          "state": "boolean",
+          "creationDate": "Date"
+        },
+        {
+          "id": "int",
+          "board": "boardId",
+          "content": "String",
+          "state": "boolean",
+          "creationDate": "Date"
+        }
+      ],
+      "archivedCards": [
+        {"id": "cardId"},
+        {"id": "cardId"},
+        {"id": "cardId"},
+        {"id": "cardId"},
+      ],
+      "canvas": "canvasId",
+      "creationDate": "Date"
+    }
+  ]
+}
+
+/*archived card object structure */
+/* state boolean correspond to:
+  0 = to be completed,
+  1 = completed
+*/
+
+{
+  "id": "int",
+  "board": "boardId",
+  "content": "String",
+  "state": "boolean",
+  "creationDate": "Date"
+}
