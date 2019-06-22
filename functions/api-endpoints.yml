@@ -1,0 +1,13 @@
+app:
+  handler: index.handler
+  events:
+    - http: ANY /
+    - http: 'ANY {proxy+}'
+getUser:
+  handler: services/getUser.handler
+  events:
+    - http: 'GET /users/{proxy+}'
+createUser:
+  handler: services/createUser.handler
+  events:
+    - http: 'POST /users'

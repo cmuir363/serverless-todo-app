@@ -3,6 +3,8 @@ service: todo-app-example
 custom:
   tableName: 'todo-user-${self:provider.stage}'
   dynamodb:
+    stages:
+      - dev
     start:
       migrate: true
 
@@ -26,24 +28,12 @@ provider:
   environment:
     USERS_TABLE: ${self:custom.tableName}
 
-functions:
-  app:
-    handler: index.handler
-    events:
-      - http: ANY /
-      - http: 'ANY {proxy+}'
-  getUser:
-    handler: services/getUser.handler
-    events:
-      - http: 'GET /users/{proxy+}'
-  createUser:
-    handler: services/createUser.handler
-    events:
-      - http: 'POST /users'
-
-resources:
-  ${file(resources/dynamodb-table.yml)}
-
 plugins:
   - serverless-dynamodb-local
   - serverless-offline
+
+functions:
+  ${file(functions/api-endpoints.yml)}
+
+resources:
+  ${file(resources/dynamodb-table.yml)}
