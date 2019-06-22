@@ -2,6 +2,10 @@ service: todo-app-example
 
 custom:
   tableName: 'todo-user-${self:provider.stage}'
+  dynamodb:
+    start:
+      migrate: true
+
 
 provider:
   name: aws
@@ -39,3 +43,7 @@ functions:
 
 resources:
   ${file(resources/dynamodb-table.yml)}
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
