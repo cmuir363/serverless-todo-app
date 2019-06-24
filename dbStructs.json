@@ -76,3 +76,16 @@
   "state": "boolean",
   "creationDate": "Date"
 }
+
+/* archived board datastructures */
+
+{
+  "id": "int",
+  "canvas": "canvasId",
+  "creationDate": "Date",
+  "cards": [
+    {"id": "cardId"},
+    {"id": "cardId"},
+    {"id": "cardId"}
+  ]
+}

@@ -19,6 +19,7 @@
   "dependencies": {
     "aws-sdk": "^2.479.0",
     "body-parser": "^1.19.0",
+    "crypto-random-string": "^3.0.1",
     "express": "^4.17.1",
     "serverless-http": "^2.0.2"
   },

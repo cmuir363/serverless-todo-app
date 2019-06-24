@@ -8,7 +8,6 @@ custom:
     start:
       migrate: true
 
-
 provider:
   name: aws
   runtime: nodejs8.10
