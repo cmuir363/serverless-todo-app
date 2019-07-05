@@ -4,7 +4,8 @@ const express = require('express')
 const app = express()
 const AWS = require('aws-sdk');
 
-const USERS_TABLE = process.env.USERS_TABLE;
+const TODO_APP_TABLE = process.env.TODO_APP_TABLE;
+const TODO_APP_GSI_1 = process.env.TODO_APP_GSI_1;
 
 const IS_OFFLINE = process.env.IS_OFFLINE;
 let dynamoDb;
@@ -21,24 +22,31 @@ if (IS_OFFLINE === 'true') {
 app.use(bodyParser.json({ strict: false }));
 
 // Get User endpoint
-app.get('/users/:userId', function (req, res) {
+app.get('/users', function (req, res) {
+
+//create parameters from QueryParams
+let partitionKey
+if (req.query.email) { partitionKey = 'USER#' + req.query.email};
+
   const params = {
-    TableName: USERS_TABLE//,
-    // Key: {
-    //   userId: req.params.userId,
-    // },
+    TableName: TODO_APP_TABLE,
+    KeyConditionExpression: "partitionKey = :dKey and sortKey = :sKey",
+    ExpressionAttributeValues: {
+      ":dKey": partitionKey,
+      ":sKey": 'META'
+    }
   }
 
-  dynamoDb.get(params, (error, result) => {
+
+  dynamoDb.query(params, (error, result) => {
     if (error) {
       console.log(error);
       res.status(400).json({ error: 'Could not get user' });
     }
-    if (result.Item) {
-      const {userId, name, email, joinDate} = result.Item;
-      res.json({ userId, name, email, joinDate });
+    if (result.Items) {
+      res.status(200).json({ result });
     } else {
-      res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: 'User Not Found'})
     }
   });
 })

@@ -103,8 +103,22 @@
                   "Resource": [
                     {
                       "Fn::GetAtt": [
-                        "UsersDynamoDBTable",
+                        "ToDoAppDynamoDBTable",
                         "Arn"
+                      ]
+                    },
+                    {
+                      "Fn::Join": [
+                        "/",
+                        [
+                          {
+                            "Fn::GetAtt": [
+                              "ToDoAppDynamoDBTable",
+                              "Arn"
+                            ]
+                          },
+                          "index/*"
+                        ]
                       ]
                     }
                   ]
@@ -136,11 +150,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/todo-app-example/dev/1561194611491-2019-06-22T09:10:11.491Z/todo-app-example.zip"
+          "S3Key": "serverless/todo-app-example/dev/1562258927394-2019-07-04T16:48:47.394Z/todo-app-example.zip"
         },
         "FunctionName": "todo-app-example-dev-app",
         "Handler": "index.handler",
-        "MemorySize": 1024,
+        "MemorySize": 128,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -151,7 +165,8 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "USERS_TABLE": "todo-user-dev"
+            "TODO_APP_TABLE": "todo-app-dev",
+            "TODO_APP_GSI_1": "GSI1"
           }
         }
       },
@@ -160,14 +175,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "AppLambdaVersion7henWErZNSiWwdmI3WGafLJ8qNWDWv5L7ZEMDJMwc8": {
+    "AppLambdaVersionPb0OLCFCJwamPEFhRLeDmnPb32de8cuktAFWTZ8FdjU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "kL18hb5vvoZE0QAX/F4mWhEVxejgPl3yqrEWxpdDhc8="
+        "CodeSha256": "KlbvZEJK583kHdwnYi3/gdKBN4K9RBINRnpCfjwT6Bw="
       }
     },
     "GetUserLambdaFunction": {
@@ -177,11 +192,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/todo-app-example/dev/1561194611491-2019-06-22T09:10:11.491Z/todo-app-example.zip"
+          "S3Key": "serverless/todo-app-example/dev/1562258927394-2019-07-04T16:48:47.394Z/todo-app-example.zip"
         },
         "FunctionName": "todo-app-example-dev-getUser",
         "Handler": "services/getUser.handler",
-        "MemorySize": 1024,
+        "MemorySize": 128,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -192,7 +207,8 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "USERS_TABLE": "todo-user-dev"
+            "TODO_APP_TABLE": "todo-app-dev",
+            "TODO_APP_GSI_1": "GSI1"
           }
         }
       },
@@ -201,14 +217,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetUserLambdaVersion7U4YLigkz1ndQoDPDi6NJxUG56ecLfwBj99UA9DEpyo": {
+    "GetUserLambdaVersionKK0pGnV88f8r3SqqLub290F8ELauLoXmauXEDH3sM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetUserLambdaFunction"
         },
-        "CodeSha256": "kL18hb5vvoZE0QAX/F4mWhEVxejgPl3yqrEWxpdDhc8="
+        "CodeSha256": "KlbvZEJK583kHdwnYi3/gdKBN4K9RBINRnpCfjwT6Bw="
       }
     },
     "CreateUserLambdaFunction": {
@@ -218,11 +234,11 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/todo-app-example/dev/1561194611491-2019-06-22T09:10:11.491Z/todo-app-example.zip"
+          "S3Key": "serverless/todo-app-example/dev/1562258927394-2019-07-04T16:48:47.394Z/todo-app-example.zip"
         },
         "FunctionName": "todo-app-example-dev-createUser",
         "Handler": "services/createUser.handler",
-        "MemorySize": 1024,
+        "MemorySize": 128,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -233,7 +249,8 @@
         "Timeout": 6,
         "Environment": {
           "Variables": {
-            "USERS_TABLE": "todo-user-dev"
+            "TODO_APP_TABLE": "todo-app-dev",
+            "TODO_APP_GSI_1": "GSI1"
           }
         }
       },
@@ -242,14 +259,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "CreateUserLambdaVersionPtukFMaHvhp3F6NeKBQwcJG8DkJyUk0n9llQ7fPTbI": {
+    "CreateUserLambdaVersionrr5KggrfMe2fa9qljYr8H8Hnat3VVVGU4YLocJCzY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateUserLambdaFunction"
         },
-        "CodeSha256": "kL18hb5vvoZE0QAX/F4mWhEVxejgPl3yqrEWxpdDhc8="
+        "CodeSha256": "KlbvZEJK583kHdwnYi3/gdKBN4K9RBINRnpCfjwT6Bw="
       }
     },
     "ApiGatewayRestApi": {
@@ -288,18 +305,6 @@
           ]
         },
         "PathPart": "users",
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        }
-      }
-    },
-    "ApiGatewayResourceUsersProxyVar": {
-      "Type": "AWS::ApiGateway::Resource",
-      "Properties": {
-        "ParentId": {
-          "Ref": "ApiGatewayResourceUsers"
-        },
-        "PathPart": "{proxy+}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -394,13 +399,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodUsersProxyVarGet": {
+    "ApiGatewayMethodUsersGet": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "GET",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceUsersProxyVar"
+          "Ref": "ApiGatewayResourceUsers"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -480,7 +485,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1561194603042": {
+    "ApiGatewayDeployment1562258918756": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -491,7 +496,7 @@
       "DependsOn": [
         "ApiGatewayMethodAny",
         "ApiGatewayMethodProxyVarAny",
-        "ApiGatewayMethodUsersProxyVarGet",
+        "ApiGatewayMethodUsersGet",
         "ApiGatewayMethodUsersPost"
       ]
     },
@@ -606,26 +611,60 @@
         }
       }
     },
-    "UsersDynamoDBTable": {
+    "ToDoAppDynamoDBTable": {
       "Type": "AWS::DynamoDB::Table",
       "Properties": {
         "AttributeDefinitions": [
           {
-            "AttributeName": "userId",
+            "AttributeName": "partitionKey",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "sortKey",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "data",
             "AttributeType": "S"
           }
         ],
         "KeySchema": [
           {
-            "AttributeName": "userId",
+            "AttributeName": "partitionKey",
             "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "sortKey",
+            "KeyType": "RANGE"
           }
         ],
         "ProvisionedThroughput": {
           "ReadCapacityUnits": 1,
           "WriteCapacityUnits": 1
         },
-        "TableName": "todo-user-dev"
+        "GlobalSecondaryIndexes": [
+          {
+            "IndexName": "GSI1",
+            "KeySchema": [
+              {
+                "AttributeName": "sortKey",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "data",
+                "KeyType": "RANGE"
+              }
+            ],
+            "ProvisionedThroughput": {
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 1
+            },
+            "Projection": {
+              "ProjectionType": "ALL"
+            }
+          }
+        ],
+        "TableName": "todo-app-dev"
       }
     }
   },
@@ -638,19 +677,19 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersion7henWErZNSiWwdmI3WGafLJ8qNWDWv5L7ZEMDJMwc8"
+        "Ref": "AppLambdaVersionPb0OLCFCJwamPEFhRLeDmnPb32de8cuktAFWTZ8FdjU"
       }
     },
     "GetUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetUserLambdaVersion7U4YLigkz1ndQoDPDi6NJxUG56ecLfwBj99UA9DEpyo"
+        "Ref": "GetUserLambdaVersionKK0pGnV88f8r3SqqLub290F8ELauLoXmauXEDH3sM"
       }
     },
     "CreateUserLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateUserLambdaVersionPtukFMaHvhp3F6NeKBQwcJG8DkJyUk0n9llQ7fPTbI"
+        "Ref": "CreateUserLambdaVersionrr5KggrfMe2fa9qljYr8H8Hnat3VVVGU4YLocJCzY"
       }
     },
     "ServiceEndpoint": {

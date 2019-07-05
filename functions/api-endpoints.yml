@@ -6,7 +6,7 @@ app:
 getUser:
   handler: services/getUser.handler
   events:
-    - http: 'GET /users/{proxy+}'
+    - http: 'GET /users {proxy+}'
 createUser:
   handler: services/createUser.handler
   events:

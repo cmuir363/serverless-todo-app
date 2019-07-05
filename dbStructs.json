@@ -82,10 +82,25 @@
 {
   "id": "int",
   "canvas": "canvasId",
+  "title": "String",
   "creationDate": "Date",
   "cards": [
     {"id": "cardId"},
     {"id": "cardId"},
     {"id": "cardId"}
+  ]
+}
+
+/* archived canvas datastructures */
+
+{
+  "id": "int",
+  "owner": "userId",
+  "creationDate": "Date",
+  "title": "String",
+  "boards": [
+    {"id": "boardId"},
+    {"id": "boardId"},
+    {"id": "boardId"}
   ]
 }

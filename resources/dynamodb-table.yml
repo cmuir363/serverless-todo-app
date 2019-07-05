@@ -1,16 +1,69 @@
 Resources:
-  UsersDynamoDBTable:
+  ToDoAppDynamoDBTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
       AttributeDefinitions:
         -
-          AttributeName: userId
+          AttributeName: partitionKey
+          AttributeType: S
+        -
+          AttributeName: sortKey
+          AttributeType: S
+        -
+          AttributeName: data
           AttributeType: S
       KeySchema:
         -
-          AttributeName: userId
+          AttributeName: partitionKey
           KeyType: HASH
+        -
+          AttributeName: sortKey
+          KeyType: RANGE
       ProvisionedThroughput:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
+      GlobalSecondaryIndexes:
+        -
+          IndexName: ${self:custom.index1}
+          KeySchema:
+            -
+              AttributeName: sortKey
+              KeyType: HASH
+            -
+              AttributeName: data
+              KeyType: RANGE
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+          Projection:
+            ProjectionType: ALL
+
       TableName: ${self:custom.tableName}
+
+
+
+# Resources:
+#   ToDoAppDynamoDBTable:
+#     Type: 'AWS::DynamoDB::Table'
+#     Properties:
+#       AttributeDefinition:
+#         -
+#           AttributeName: partitionKey
+#           AttributeType: String
+#         -
+#           AttributeName: sortKey
+#           AttributeType: String
+#         -
+#           AttributeName: data
+#           AttributeType: String
+#       KeySchema:
+#         -
+#           AttributeName: partitionKey
+#           KeyType: HASH
+#         -
+#           AttributeName: sortKey
+#           KeyType: RANGE
+#       ProvisionedThroughput:
+#         ReadCapacityUnits: 1
+#         WriteCapacityUnits: 1
+#       TableName: ${self:custom.tableName}
