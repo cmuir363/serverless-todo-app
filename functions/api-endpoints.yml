@@ -14,4 +14,8 @@ createUser:
 canvasEvents:
   handler: services/canvas.handler
   events:
-    - http: 'ANY /canvas'
+    - http: 'ANY /canvas {proxy+}'
+boardEvents:
+  handler: services/boards.handler
+  events:
+    - http: 'ANY /boards {proxy+}'

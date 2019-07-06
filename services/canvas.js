@@ -5,7 +5,7 @@ const app = express()
 const AWS = require('aws-sdk');
 const cryptoRandomString = require('crypto-random-string');
 //import routes
-const getCanvas = require('./canvasFeatures/getCanvas.js')
+const getCanvas = require('./canvas/getCanvas.js')
 const TODO_APP_TABLE = process.env.TODO_APP_TABLE;
 const TODO_APP_GSI_1 = process.env.TODO_APP_GSI_1;
 
@@ -22,8 +22,6 @@ if (IS_OFFLINE === 'true') {
 };
 
 app.use(bodyParser.json({ strict: false }));
-
-
 
 // Create Canvas Endpoint
 app.post('/canvas', function (req, res) {
@@ -51,8 +49,8 @@ app.post('/canvas', function (req, res) {
   const canvasPartitionKey = 'CANVAS#' + cryptoRandomString({length: 24})
   // assign sort key which for first entry is simply META
   const canvasSortKey = "META"
-  // assign Data as member status - allows us to search database to get all current members
-  const canvasData = email
+  // assign Data as creator - allows us to search database to get all current members
+  const canvasData = "USER#" + email
   const timestamp = Date.now()
 
   const canvasParams = {
@@ -92,13 +90,13 @@ app.post('/canvas', function (req, res) {
   dynamoDb.put(canvasParams, (error) => {
     if (error) {
       console.log(error);
-      res.status(400).json({ error: 'Could not create canvas' });
+      res.status(500).json({ error: 'Could not create canvas' });
     }
 
     dynamoDb.put(canvasReferenceParams, (error) => {
       if (error) {
         console.log(error);
-        res.status(400).json({ error: 'Could not create canvas' });
+        res.status(500).json({ error: 'Could not create canvas reference' });
       }
       res.status(201).json({
         canvasReferenceMessage: 'Canvas Reference Successfully Created',
