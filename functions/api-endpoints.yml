@@ -14,4 +14,4 @@ createUser:
 canvasEvents:
   handler: services/canvas.handler
   events:
-    - http: 'POST /canvas'
+    - http: 'ANY /canvas'

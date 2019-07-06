@@ -4,7 +4,8 @@ const express = require('express')
 const app = express()
 const AWS = require('aws-sdk');
 const cryptoRandomString = require('crypto-random-string');
-
+//import routes
+const getCanvas = require('./canvasFeatures/getCanvas.js')
 const TODO_APP_TABLE = process.env.TODO_APP_TABLE;
 const TODO_APP_GSI_1 = process.env.TODO_APP_GSI_1;
 
@@ -21,6 +22,8 @@ if (IS_OFFLINE === 'true') {
 };
 
 app.use(bodyParser.json({ strict: false }));
+
+
 
 // Create Canvas Endpoint
 app.post('/canvas', function (req, res) {
@@ -109,5 +112,7 @@ app.post('/canvas', function (req, res) {
 
 // -----------------------------------------------------------------------------
 })
+
+app.use('/canvas', getCanvas)
 
 module.exports.handler = serverless(app);
