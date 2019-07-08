@@ -93,12 +93,35 @@ router.post('/', (req, res) => {
         console.log(error);
         res.status(500).json({ error: 'Could not create board reference' });
       }
-      res.status(201).json({
-        canvasReferenceMessage: 'Board Reference Successfully Created',
-        canvasReferenceObject: { referencePartitionKey, referenceSortKey, referenceData, timestamp },
-        canvasObjectMessage: 'Board Object Successfully Created',
-        canvasObject: { boardPartitionKey, boardSortKey, boardData, email, timestamp }
-      });
+
+      //update boardIdList attribute on canvas item
+      canvasParams = {
+        TableName: TODO_APP_TABLE,
+        UpdateExpression: "set boardIdList = list_append(boardIdList, :uValue)",
+        Key: {
+          "partitionKey": userId,
+          "sortKey": canvasReference
+        },
+        ExpressionAttributeValues: {
+          ":uValue": [boardPartitionKey]
+        },
+        ReturnValues: "UPDATED_NEW"
+      }
+
+      //update the board item with the new card reference
+      dynamoDb.update(canvasParams, (err, data) => {
+        if (err) {
+          console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+          res.status(500).json({error: "Unable to add board reference to canvas list"})
+        } else {
+          console.log("Update Item succeeded:", JSON.stringify(data, null, 2));
+          res.status(201).json({
+            message: 'Board Successfully Created',
+            boardObject: boardReferenceParams.Item,
+            canvasBoardList: data
+          })
+        }
+      })
     });
    });
 

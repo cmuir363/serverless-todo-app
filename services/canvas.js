@@ -61,7 +61,7 @@ app.post('/canvas', function (req, res) {
       data: canvasData,
       creationDate: timestamp,
       canvasTitle: canvasTitle,
-      users: [email]
+      userIdList: [email]
     },
   };
 
@@ -83,7 +83,7 @@ app.post('/canvas', function (req, res) {
       creationDate: timestamp,
       canvasTitle: canvasTitle,
       users: [email],
-      boards: []
+      boardIdList: []
     },
   };
 
