@@ -19,6 +19,7 @@ boardEvents:
   handler: services/boards.handler
   events:
     - http: 'ANY /boards {proxy+}'
+    - http: 'PUT /boards/{boardId}'
 cardEvents:
   handler: services/cards.handler
   events:
