@@ -21,8 +21,8 @@ if (IS_OFFLINE === 'true') {
 
 app.use(bodyParser.json({ strict: false }));
 
-app.get('/', function (req, res) {
-  res.send('Kaorla API v0.1.0')
+app.get('/v1.0/', function (req, res) {
+  res.send('Kaorla API v1.0')
 })
 
 module.exports.handler = serverless(app);

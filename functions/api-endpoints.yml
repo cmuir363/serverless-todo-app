@@ -1,7 +1,7 @@
 app:
   handler: index.handler
   events:
-    - http: ANY /
+    - http: ANY /v1.0/
     - http: 'ANY {proxy+}'
 getUser:
   handler: services/getUser.handler
@@ -24,4 +24,4 @@ cardEvents:
   handler: services/cards.handler
   events:
     - http: 'ANY /cards'
-    - http: 'PUT /cards/{cardId}'
+    - http: 'ANY /cards/{cardId}'

@@ -56,8 +56,7 @@ router.post('/', (req, res) => {
       data: boardData,
       creationDate: timestamp,
       canvasId: canvasReference,
-      boardTitle,
-      cardIdList: []
+      boardTitle
     }
   }
 
