@@ -25,3 +25,7 @@ cardEvents:
   events:
     - http: 'ANY /cards'
     - http: 'ANY /cards/{cardId}'
+userEvents:
+  handler: services/users.handler
+  events:
+    - http: 'PUT /users/{proxy+}'

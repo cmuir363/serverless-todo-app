@@ -104,7 +104,6 @@ router.delete('/:cardId', (req, res) => {
             for (let i=0; i<cardIdList.length; i++) {
               if (cardIdList[i] === cardReference) {
                   deleteIndex = i
-                  console.log("MESSAGGE 0 - " + deleteIndex)
                   break
                 }
               }
