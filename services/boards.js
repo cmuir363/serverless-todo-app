@@ -8,8 +8,8 @@ const getBoards = require("./boards/getBoards.js")
 const createBoards = require("./boards/createBoards.js")
 const updateBoards = require("./boards/updateBoards.js")
 
-app.use('/boards', getBoards)
-app.use('/boards', createBoards)
-app.use('/boards', updateBoards)
+app.use('/v1.0/boards', getBoards)
+app.use('/v1.0/boards', createBoards)
+app.use('/v1.0/boards', updateBoards)
 
 module.exports.handler = serverless(app)

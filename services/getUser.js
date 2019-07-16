@@ -22,7 +22,7 @@ if (IS_OFFLINE === 'true') {
 app.use(bodyParser.json({ strict: false }));
 
 // Get User endpoint
-app.get('/users', function (req, res) {
+app.get('/v1.0/users', function (req, res) {
 
 //create parameters from QueryParams
 let partitionKey

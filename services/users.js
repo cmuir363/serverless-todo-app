@@ -6,6 +6,6 @@ const app = express()
 //import user methods
 const addCanvas = require("./users/addCanvas.js")
 
-app.use('/users', addCanvas)
+app.use('/v1.0/users', addCanvas)
 
 module.exports.handler = serverless(app)

@@ -6,26 +6,26 @@ app:
 getUser:
   handler: services/getUser.handler
   events:
-    - http: 'GET /users {proxy+}'
+    - http: 'GET /v1.0/users {proxy+}'
 createUser:
   handler: services/createUser.handler
   events:
-    - http: 'POST /users'
+    - http: 'POST /v1.0/users'
 canvasEvents:
   handler: services/canvas.handler
   events:
-    - http: 'ANY /canvas {proxy+}'
+    - http: 'ANY /v1.0/canvas {proxy+}'
 boardEvents:
   handler: services/boards.handler
   events:
-    - http: 'ANY /boards {proxy+}'
-    - http: 'PUT /boards/{boardId}'
+    - http: 'ANY /v1.0/boards {proxy+}'
+    - http: 'PUT /v1.0/boards/{boardId}'
 cardEvents:
   handler: services/cards.handler
   events:
-    - http: 'ANY /cards'
-    - http: 'ANY /cards/{cardId}'
+    - http: 'ANY /v1.0/cards'
+    - http: 'ANY /v1.0/cards/{cardId}'
 userEvents:
   handler: services/users.handler
   events:
-    - http: 'PUT /users/{proxy+}'
+    - http: 'PUT /v1.0/users/{proxy+}'

@@ -24,7 +24,7 @@ if (IS_OFFLINE === 'true') {
 app.use(bodyParser.json({ strict: false }));
 
 // Create Canvas Endpoint
-app.post('/canvas', function (req, res) {
+app.post('/v1.0/canvas', function (req, res) {
   const { email } = req.body;
   let canvasTitle='EMPTY'; if (req.body.canvasTitle) {canvasTitle=req.body.canvasTitle};
 
@@ -111,6 +111,6 @@ app.post('/canvas', function (req, res) {
 // -----------------------------------------------------------------------------
 })
 
-app.use('/canvas', getCanvas)
+app.use('/v1.0/canvas', getCanvas)
 
 module.exports.handler = serverless(app);

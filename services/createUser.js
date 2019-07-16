@@ -32,7 +32,7 @@ function ValidateEmail(mail) {
 }
 
 // Create User endpoint
-app.post('/users', function (req, res) {
+app.post('/v1.0/users', function (req, res) {
   const { name, email } = req.body;
   console.log(req.body)
   console.log(name, email)
